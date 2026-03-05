@@ -1,0 +1,16 @@
+body {
+    background-image: url(assets/img/background_1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+header {
+    height: 156px;
+    background-color: rgb(49,66,155, 0.9);
+    padding: 0 calc((100% - 1440px)/2);
+    font-family: 'LuckiestGuy';
+    font-size: 56px;
+    color: rgb(255,203,5);
+}
+
