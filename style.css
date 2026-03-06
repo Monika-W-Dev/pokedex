@@ -1,5 +1,6 @@
 body {
-    background-image: url(assets/img/background_1.png);
+    /* background-image: url(assets/img/background_4.jpg); */
+    background-color: rgba(88, 109, 213, 0.98);
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -7,10 +8,34 @@ body {
 
 header {
     height: 156px;
-    background-color: rgb(49,66,155, 0.9);
-    padding: 0 calc((100% - 1440px)/2);
+    background-color: rgb(49, 66, 155);
+    padding: calc((100% - 1440px)/2);
+    padding-inline-start: 24px;
     font-family: 'LuckiestGuy';
-    font-size: 56px;
-    color: rgb(255,203,5);
+    font-size: clamp(1.5rem, 0.9286rem + 2.8571vw, 3.5rem);
+    color: rgb(255, 203, 5);
+    display: flex;
+    align-items: center;
 }
 
+main {
+    flex: 1;
+    height: calc(100vh - 252px);
+    padding: 0 calc((100% - 1440px)/2);
+    overflow-y: auto;
+}
+
+footer {
+    flex-shrink: 0;
+    height: 96px;
+    background-color: rgb(49, 66, 155, 1.0);
+}
+
+#list_view {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 36px auto;
+    gap: 24px;
+    
+}

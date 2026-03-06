@@ -8,9 +8,30 @@
     text-decoration: none;
     word-break: normal;
     scroll-behavior: smooth;
+    font-family: 'FiraSansRegular';
 }
 
 @font-face {
     font-family: 'LuckiestGuy';
     src: url(/assets/fonts/LuckiestGuy-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'FiraSansExtraLightItalic';
+    src: url(/assets/fonts/FiraSans-ExtraLightItalic.ttf);
+}
+
+@font-face {
+    font-family: 'FiraSansLight';
+    src: url(/assets/fonts/FiraSans-Light.ttf);
+}
+
+@font-face {
+    font-family: 'FiraSansRegular';
+    src: url(/assets/fonts/FiraSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'FiraSansBold';
+    src: url(/assets/fonts/FiraSans-Bold.ttf);
 }

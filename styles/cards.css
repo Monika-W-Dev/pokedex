@@ -1,0 +1,146 @@
+.single_list_card {
+    height: 256px;
+    width: 256px;
+    border-radius: 24px;
+    filter: drop-shadow(4px 8px 10px rgba(0, 0, 0, 0.5));
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.single_list_card:hover {
+    cursor: pointer;
+    /* transform: scale(1.1); */
+    transform: scale(1.05) translateY(-5px);
+    filter: drop-shadow(2px 2px 10px rgba(255, 252, 252, 0.4));
+}
+
+#pokemon_Id {
+    position: absolute;
+    top: 16px;
+    right: 14px;
+    font-family: 'FiraSansExtraLightItalic';
+    font-size: 16px;
+}
+
+#pokemon_image {
+    height: 136px;
+    width: auto;
+}
+
+#pokemon_name {
+    font-family: 'FiraSansBold';
+    font-size: 36px;
+    margin-top: -16px;
+}
+
+#pokemon_types {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+}
+
+#pokemon_type {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 24px;
+    padding: 2px 12px;
+}
+
+
+.bug {
+    background: linear-gradient(rgb(28, 75, 39, 0.9), rgb(28, 75, 39, 0.9)), url(/assets/img/favicon.png);
+    background-size: cover;
+    background-position: center;
+    color: rgb(255, 255, 255);
+}
+
+.dark {
+    background-color: rgb(4, 7, 6);
+    color: rgb(90, 89, 121);
+}
+
+.dragon {
+    background-color: rgb(68, 139, 149);
+    color: rgb(97, 202, 217);
+}
+
+.electric {
+    background-color: rgb(228, 227, 42);
+    color: rgb(251, 251, 114);
+}
+
+.fairy {
+    background-color: rgb(151, 25, 68);
+    color: rgb(234, 19, 105);
+}
+
+.fighting {
+    background-color: rgb(153, 64, 37);
+    color: rgb(239, 97, 56);
+}
+
+.fire {
+    background-color: rgb(171, 31, 35);
+    color: rgb(253, 76, 90);
+}
+
+.flying {
+    background-color: rgb(74, 103, 125);
+    color: rgb(147, 178, 199);
+}
+
+.ghost {
+    background-color: rgb(51, 51, 107);
+    color: rgb(144, 103, 144);
+}
+
+.grass {
+    background-color: rgb(18, 124, 61);
+    color: rgb(255, 255, 255);
+}
+
+.ground {
+    background-color: rgb(169, 112, 44);
+    color: rgb(110, 73, 31);
+}
+
+.ice {
+    background-color: rgb(134, 210, 244);
+    color: rgb(216, 240, 250);
+}
+
+.normal {
+    background-color: rgb(216, 240, 250);
+    color: rgb(204, 151, 167);
+}
+
+.poison {
+    background-color: rgb(94, 45, 136);
+     color: rgb(255, 255, 255);
+}
+
+.psychic {
+    background-color: rgb(163, 43, 106);
+    color: rgb(248, 28, 145);
+}
+
+.rock {
+    background-color: rgb(72, 24, 11);
+    color: rgb(139, 62, 33);
+}
+
+.steel {
+    background-color: rgb(95, 117, 109);
+    color: rgb(66, 189, 148);
+}
+
+.water {
+    background-color: rgb(21, 82, 226);
+    color: rgb(134, 168, 252);
+}
