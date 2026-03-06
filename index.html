@@ -23,8 +23,8 @@
 
     <main>
         <section id="list_view">
-            <div id="single_list_card" class="single_list_card bug">
-                <span id="pokemon_Id">#1</span>
+            <div id="single_list_card" class="single_list_card bug" onclick="openDialog()">
+                <span id="pokemon_id">#1</span>
                 <img id="pokemon_image"
                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
                     alt="Bulbasaur">
@@ -37,50 +37,49 @@
                         poison</div>
                 </div>
             </div>
-            <div id="single_list_card" class="single_list_card bug">
 
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
 
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
 
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
 
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
-
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
-
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
-
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
-
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
-
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
-
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
-
-            </div>
-            <div id="single_list_card" class="single_list_card bug">
-
-            </div>
         </section>
-        <dialog>
 
+
+        <dialog id="dialog" class="bug" onclick="closeDialog()">
+            <section id="single_pokemon_overlay" onclick="preventCloseDialogOnDialog(event)">
+                
+                <div id="single_pokemon_info_top">
+                    <img id="pokemon_image"
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+                        alt="Bulbasaur">
+                    <span id="pokemon_name">BULBASAUR</span>
+                    <div id="pokemon_types">
+                        <div id="pokemon_type" class="grass">
+                            grass
+                        </div>
+                        <div id="pokemon_type" class="poison">
+                            poison</div>
+                    </div>
+                </div>
+
+                <div id="single_pokemon_info_buttom">
+                    <div id="card_taps">
+                        <button id="about" class="card_tap">About</button>
+                        <button id="base_stats" class="card_tap">Base Stats</button>
+                        <button id="evolution" class="card_tap">Evolution</button>
+                    </div>
+                    <div class="info_section">
+
+                    </div>
+                </div>
+
+            </section>
         </dialog>
+
     </main>
 
-    <footer>
 
+    <footer>
+        <span>Monika Weikum | 2026</span>
     </footer>
 
 </body>

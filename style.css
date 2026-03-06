@@ -1,34 +1,69 @@
+html {
+    height: 100dvh;
+    overflow: hidden;
+}
+
 body {
     /* background-image: url(assets/img/background_4.jpg); */
     background-color: rgba(88, 109, 213, 0.98);
     background-size: cover;
     background-repeat: no-repeat;
-
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100dvh;
 }
 
 header {
-    height: 156px;
+    height: clamp(120px, 8vw + 20px, 156px);
     background-color: rgb(49, 66, 155);
-    padding: calc((100% - 1440px)/2);
-    padding-inline-start: 24px;
-    font-family: 'LuckiestGuy';
-    font-size: clamp(1.5rem, 0.9286rem + 2.8571vw, 3.5rem);
+    padding: 0 calc((100% - 1440px)/2);
+    flex-shrink: 0;
+    font-size: clamp(1.75rem, 0.9286rem + 2.8571vw, 3.5rem);
     color: rgb(255, 203, 5);
     display: flex;
     align-items: center;
+    z-index: 10;
+}
+
+header h1 {
+    padding-inline-start: 24px;
+    font-family: 'LuckiestGuy';
 }
 
 main {
     flex: 1;
-    height: calc(100vh - 252px);
-    padding: 0 calc((100% - 1440px)/2);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 calc((100% - 1440px)/2);
+}
+
+main::-webkit-scrollbar {
+    width: 10px;
+}
+
+main::-webkit-scrollbar-track {
+  background: rgb(162, 175, 243); 
+}
+
+main::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background:rgb(255, 203, 5, 0.8);
+}
+
+main::-webkit-scrollbar-thumb:hover {
+   background:rgba(255, 231, 133, 0.8);
 }
 
 footer {
     flex-shrink: 0;
     height: 96px;
     background-color: rgb(49, 66, 155, 1.0);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 #list_view {
@@ -37,5 +72,5 @@ footer {
     flex-wrap: wrap;
     margin: 36px auto;
     gap: 24px;
-    
+
 }
