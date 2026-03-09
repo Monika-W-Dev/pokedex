@@ -48,7 +48,6 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    padding-top: 12px;
 }
 
 #pokemon_type {
@@ -90,35 +89,35 @@
     height: 100%;
     width: 100%;
     border-style: none;
+        display: flex;
+    flex-direction: column;
 }
 
 #single_pokemon_info_top {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     flex-direction: column;
-    max-height: 40%;
     width: 100%;
-    margin-top: 36px;
+    flex: 0 0 47%;
+    padding-bottom: 12px;
 }
 
 #single_pokemon_info_buttom {
-    max-height: 60%;
     width: 100%;
-    margin-top: 24px;
     backdrop-filter: brightness(1.5);
-    /* border-top: solid; */
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
-    padding-top: 8px;
+    flex: 0 0 53%;
 }
 
 #card_taps {
     display: flex;
     justify-content: center;
     align-items: center;
-    display: row;
+    flex-direction: row;
     gap: 20px;
+    padding-top: 2px;
 }
 
 .card_tap {
@@ -136,8 +135,45 @@
 
 .info_section {
     width: 100%;
-    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 24px;
+    padding-left: 24px;
 }
+
+td:first-child {
+    width: 92px;
+    height: 30px;
+}
+
+td:nth-child(3) {
+    width: 240px;
+    padding-left: 24px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  max-width: 200px;
+  height: 10px;
+  background-color: #2a2a2a;
+  border-radius: 4px;
+  border: 1px solid #3a3a3a;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 75%;
+  background: #ffcf98;
+  
+  transition: width 2s ease;
+  
+}
+
+
+
 
 .bug {
     background-image: linear-gradient(rgba(28, 75, 39, 0.9), rgba(28, 75, 39, 0.9)), url(/assets/img/favicon.png);
