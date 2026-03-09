@@ -8,6 +8,8 @@
 
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 
+    <script src="scripts/templates.js"></script>
+    <script src="scripts/buttons.js"></script>
     <script src="script.js"></script>
 
     <link rel="stylesheet" href="styles/standard.css">
@@ -16,7 +18,7 @@
 
 </head>
 
-<body>
+<body onload="init()">
     <header>
         <h1>Pokedex</h1>
     </header>
@@ -24,17 +26,17 @@
     <main>
         <section id="list_view">
             <div id="single_list_card" class="single_list_card bug" onclick="openDialog()">
-                <span id="pokemon_id">#1</span>
+                <!-- <span id="pokemon_id">#1</span>
                 <img id="pokemon_image"
                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
                     alt="Bulbasaur">
-                <span id="pokemon_name">BULBASAUR</span>
+                <span id="pokemon_name">BULBASAUR</span> -->
                 <div id="pokemon_types">
-                    <div id="pokemon_type" class="grass">
+                    <!-- <div id="pokemon_type" class="grass">
                         grass
                     </div>
                     <div id="pokemon_type" class="poison">
-                        poison</div>
+                        poison</div> -->
                 </div>
             </div>
 
@@ -154,7 +156,7 @@
                                 </tr>
                             </tbody>
                         </table> -->
-                                <div class="evolution">
+                                <!-- <div class="evolution">
                                     <img class="evolution_img"
                                         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
                                         alt="">
@@ -164,7 +166,8 @@
                                     <img class="evolution_img"
                                         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg"
                                         alt="">
-                                </div>
+                                </div> -->
+
                             </div>
                         </div>
 

@@ -176,15 +176,19 @@
     height: 30px;
     line-height: 30px;
     background-color: rgb(255, 229, 126);
+    background: linear-gradient(to bottom, #fff7b7 5%, #facd83 100%);
+    
 }
 
 .card_tap:hover {
     cursor: pointer;
     background-color: rgb(255, 230, 10);
+    background: linear-gradient(to bottom, #f6e146 5%, #ffab23 100%);
 }
 
 .open_card {
     background-color: rgb(255, 203, 5);
+    background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
 }
 
 .info_section {
