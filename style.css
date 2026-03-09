@@ -79,4 +79,12 @@ footer {
 #card_taps {
     gap: 0;
 }
+
+.evolution_img {
+    height: 80px;
+}
+
+.card_tap {
+width: 98px;
+}
 } 
