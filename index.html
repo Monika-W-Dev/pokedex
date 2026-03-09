@@ -45,32 +45,35 @@
 
 
         <dialog id="dialog" class="bug" onclick="closeDialog()">
-            <section id="single_pokemon_overlay" onclick="preventCloseDialogOnDialog(event)">
+            <button class="next_previous_button" id="next">></button>
+            <button class="next_previous_button" id="previous"><</button>
 
-                <div id="single_pokemon_info_top">
-                    <img id="pokemon_image"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
-                        alt="Bulbasaur">
-                    <span id="pokemon_name">BULBASAUR</span>
-                    <div id="pokemon_types">
-                        <div id="pokemon_type" class="grass">
-                            grass
+                    <section id="single_pokemon_overlay" onclick="preventCloseDialogOnDialog(event)">
+
+                        <div id="single_pokemon_info_top">
+                            <img id="pokemon_image"
+                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+                                alt="Bulbasaur">
+                            <span id="pokemon_name">BULBASAUR</span>
+                            <div id="pokemon_types">
+                                <div id="pokemon_type" class="grass">
+                                    grass
+                                </div>
+                                <div id="pokemon_type" class="poison">
+                                    poison</div>
+                            </div>
                         </div>
-                        <div id="pokemon_type" class="poison">
-                            poison</div>
-                    </div>
-                </div>
 
-                <div id="single_pokemon_info_buttom">
-                    <div id="card_taps">
-                        <button id="about" class="card_tap">About</button>
-                        <button id="base_stats" class="card_tap">Base Stats</button>
-                        <button id="evolution" class="card_tap">Evolution</button>
-                    </div>
+                        <div id="single_pokemon_info_buttom">
+                            <div id="card_taps">
+                                <button id="about" class="card_tap open_card">About</button>
+                                <button id="base_stats" class="card_tap">Base Stats</button>
+                                <button id="evolution" class="card_tap">Evolution</button>
+                            </div>
 
-                    <div class="info_section">
+                            <div class="info_section">
 
-                        <!-- <table class="info_about">
+                                <!-- <table class="info_about">
                             <tbody>
                                 <tr>
                                     <td>Height</td>
@@ -87,7 +90,7 @@
                             </tbody>
                         </table> -->
 
-                        <!-- <table class="info_base_stats">
+                                <!-- <table class="info_base_stats">
                             <tbody>
                                 <tr>
                                     <td>HP</td>
@@ -151,21 +154,21 @@
                                 </tr>
                             </tbody>
                         </table> -->
-                        <div class="evolution">
-                            <img class="evolution_img"
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
-                                alt="">
-                            <img class="evolution_img"
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
-                                alt="">
-                            <img class="evolution_img"
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg"
-                                alt="">
+                                <div class="evolution">
+                                    <img class="evolution_img"
+                                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+                                        alt="">
+                                    <img class="evolution_img"
+                                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
+                                        alt="">
+                                    <img class="evolution_img"
+                                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg"
+                                        alt="">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-            </section>
+                    </section>
         </dialog>
 
     </main>

@@ -43,16 +43,16 @@ main::-webkit-scrollbar {
 }
 
 main::-webkit-scrollbar-track {
-  background: rgb(162, 175, 243); 
+    background: rgb(162, 175, 243);
 }
 
 main::-webkit-scrollbar-thumb {
     border-radius: 30px;
-    background:rgb(255, 203, 5, 0.8);
+    background: rgb(255, 203, 5, 0.8);
 }
 
 main::-webkit-scrollbar-thumb:hover {
-   background:rgba(255, 231, 133, 0.8);
+    background: rgba(255, 231, 133, 0.8);
 }
 
 footer {
@@ -76,15 +76,26 @@ footer {
 }
 
 @media screen and (max-width: 400px) {
-#card_taps {
-    gap: 0;
-}
+    #pokemon_name {
+        font-size: 28px;
+    }
 
-.evolution_img {
-    height: 80px;
-}
+    .next_previous_button {
+        width: 36px;
+        height: 36px;
+        font-size: 36px;
+    }
 
-.card_tap {
-width: 98px;
+    #card_taps {
+        gap: 0;
+    }
+
+    .evolution_img {
+        height: 80px;
+    }
+
+    .card_tap {
+        width: 98px;
+    }
+
 }
-} 
