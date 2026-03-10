@@ -33,7 +33,8 @@ function renderPokemonOverview() {
     let overviewSection = document.getElementById('list_view');
     overviewSection.innerHTML = "";
     for (let pokemonsIndex = 0; pokemonsIndex < pokemonsData.length; pokemonsIndex++) {
-        overviewSection.innerHTML += pokemonListViewTemplate(pokemonsIndex);        
+        overviewSection.innerHTML += pokemonListViewTemplate(pokemonsIndex);
+                
     }
 }
 
@@ -43,12 +44,11 @@ function capitalLetters(name) {
 }
 
 function renderTypes(pokemonsIndex) {
-    let renderTypes = document.getElementById('pokemon_types');
-    renderTypes.innerHTML = "";
+    let renderTypesHtml = "";
     for (let typesIndex = 0; typesIndex < pokemonsData[pokemonsIndex].types.length; typesIndex++) {
-       renderTypes.innerHTML += pokemonTypesTemplate(pokemonsIndex, typesIndex);
-        
+      renderTypesHtml += pokemonTypesTemplate(pokemonsIndex, typesIndex);  
     }
+    return renderTypesHtml;
 }
 
 
