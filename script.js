@@ -9,7 +9,7 @@ let pokemonsData = [
         ],
         'height': 170,
         'weight': 70,
-        'abilities': ['blaze', ' solar'],
+        'abilities': ['blaze', 'solar'],
         'base_stats': {
             'hp': 45,
             'attack': 65,
@@ -32,10 +32,24 @@ function init() {
 function renderPokemonOverview() {
     let overviewSection = document.getElementById('list_view');
     overviewSection.innerHTML = "";
-    for (let pokemonsIndex = 0; pokemonsIndex < pokemonsData.length; pokemonsIndex++) {
-        overviewSection.innerHTML += pokemonListViewTemplate(pokemonsIndex);
-                
+    for (let pokemonIndex = 0; pokemonIndex < pokemonsData.length; pokemonIndex++) {
+        overviewSection.innerHTML += pokemonListViewTemplate(pokemonIndex);
     }
+}
+
+function renderTypes(pokemonIndex) {
+    let renderTypesHtml = "";
+    for (let typesIndex = 0; typesIndex < pokemonsData[pokemonIndex].types.length; typesIndex++) {
+      renderTypesHtml += pokemonTypesTemplate(pokemonIndex, typesIndex);  
+    }
+    return renderTypesHtml;
+}
+
+function renderPokemonAbilities(pokemonIndex) {
+    return pokemonsData[pokemonIndex].abilities.map(ability => {
+       return `${ability.charAt(0).toUpperCase() + ability.slice(1)}`;
+    }).join(', ');
+
 }
 
 function capitalLetters(name) {
@@ -43,18 +57,11 @@ function capitalLetters(name) {
     return capitalName;
 }
 
-function renderTypes(pokemonsIndex) {
-    let renderTypesHtml = "";
-    for (let typesIndex = 0; typesIndex < pokemonsData[pokemonsIndex].types.length; typesIndex++) {
-      renderTypesHtml += pokemonTypesTemplate(pokemonsIndex, typesIndex);  
-    }
-    return renderTypesHtml;
-}
-
-
-function openDialog() {
+function openDialog(pokemonIndex) {
     const dialogRef = document.getElementById("dialog");
     dialogRef.showModal();
+    let singlePokemonOverlay = document.getElementById('single_pokemon_overlay');
+    singlePokemonOverlay.innerHTML = singlePokemonTemplate(pokemonIndex);
 }
 
 function closeDialog() {
