@@ -57,18 +57,3 @@ function capitalLetters(name) {
     return capitalName;
 }
 
-function openDialog(pokemonIndex) {
-    const dialogRef = document.getElementById("dialog");
-    dialogRef.showModal();
-    let singlePokemonOverlay = document.getElementById('single_pokemon_overlay');
-    singlePokemonOverlay.innerHTML = singlePokemonTemplate(pokemonIndex);
-}
-
-function closeDialog() {
-    const dialogRef = document.getElementById("dialog");
-    dialogRef.close();
-}
-
-function preventCloseDialogOnDialog(event) {
-    event.stopPropagation();
-}

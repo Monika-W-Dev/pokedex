@@ -2,7 +2,7 @@
 function pokemonListViewTemplate(pokemonIndex) {
     let pokemon = pokemonsData[pokemonIndex];
     let mainType = pokemon.types[0];
-    
+
     return `<div class="single_list_card ${mainType}" onclick="openDialog(${pokemonIndex})">
                 <span id="pokemon_id${pokemonIndex}" class="pokemon_id"># ${pokemonsData[pokemonIndex].id}</span>
                 <img id="pokemon_image${pokemonIndex}" class="pokemon_image"
@@ -27,7 +27,7 @@ function pokemonTypesTemplate(pokemonIndex, typesIndex) {
 }
 
 function singlePokemonTemplate(pokemonIndex) {
- return `<div id="single_pokemon_info_top">
+    return `<div id="single_pokemon_info_top">
             <img id="pokemon_image" class="pokemon_image"
             src="${pokemonsData[pokemonIndex].img}"
             alt="${pokemonsData[pokemonIndex].name}">
@@ -41,13 +41,19 @@ function singlePokemonTemplate(pokemonIndex) {
 
  <div id="single_pokemon_info_buttom">
                             <div id="card_taps">
-                                <button id="about" class="card_tap open_card">About</button>
-                                <button id="base_stats" class="card_tap">Base Stats</button>
-                                <button id="evolution" class="card_tap">Evolution</button>
+                                <button id="about" class="card_tap open_card" onclick="changeDisplayInfoPokemon('about', ${pokemonIndex})">About</button>
+                                <button id="baseStats" class="card_tap" onclick="changeDisplayInfoPokemon('baseStats', ${pokemonIndex})">Base Stats</button>
+                                <button id="evolution" class="card_tap" onclick="changeDisplayInfoPokemon('evolution', ${pokemonIndex})">Evolution</button>
                             </div>
 
-         <div class="info_section">
-            <table class="info_about">
+        <div class="info_section" id="info_section">
+        ${aboutTemplate(pokemonIndex)}
+        <div>  
+`
+}
+
+function aboutTemplate(pokemonIndex) {
+    return ` <table class="info_about">
                 <tbody>
                     <tr>
                         <td>Height</td>
@@ -63,6 +69,54 @@ function singlePokemonTemplate(pokemonIndex) {
                     </tr>
                 </tbody>
             </table>
-        <div>
 `
 }
+
+function baseStatsTemplate(pokemonIndex) {
+    let baseStats = pokemonsData[pokemonIndex].base_stats;
+    let allStatsHtml = Object.entries(baseStats).map(([statsName, statsValue]) => {
+        return `
+            <tr>
+                <td>${capitalLetters(statsName)}</td>
+                <td>${statsValue}</td>
+                <td>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: ${statsValue}%" >
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join('');
+    return `
+        <table class="info_base_stats">
+            <tbody>
+                ${allStatsHtml}
+            </tbody>
+        </table>
+`
+}
+
+function evolutionTemplate(pokemonIndex) {
+    let evolutionHtml = pokemonsData[pokemonIndex].evolution.map(image => {
+        return ` <img class="evolution_img"
+        src="${image}">`;
+    }).join('');
+    return `<div class="evolution">
+        ${evolutionHtml}
+            </div>
+`
+}
+
+// return `<div class="evolution">
+//             <img class="evolution_img"
+//                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+//                 alt="">
+//             <img class="evolution_img"
+//                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
+//                 alt="">
+//             <img class="evolution_img"
+//                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg"
+//                 alt="">
+//         </div>
+// `   
