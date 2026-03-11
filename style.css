@@ -76,7 +76,7 @@ footer {
 }
 
 @media screen and (max-width: 400px) {
-    #pokemon_name {
+    .pokemon_name {
         font-size: 28px;
     }
 
@@ -98,4 +98,8 @@ footer {
         width: 98px;
     }
 
+    .info_section table {
+        padding-top: 12px;
+        padding-left: 8px;
+    }
 }

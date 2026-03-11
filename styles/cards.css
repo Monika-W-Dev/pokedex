@@ -38,7 +38,7 @@
 
 .pokemon_name {
     font-family: 'FiraSansBold';
-    font-size: 36px;
+    font-size: 34px;
     /* font-size: clamp(1.375rem, 1.125rem + 1.25vw, 2.25rem); */
     margin-top: -16px;
 }
@@ -126,13 +126,13 @@
 
 #next {
     position: absolute;
-    top: 158px;
+    top: 194px;
     right: 12px;
 }
 
 #previous {
     position: absolute;
-    top: 158px;
+    top: 194px;
     left: 12px;
 }
 
@@ -201,8 +201,8 @@
 }
 
 .info_section table {
-    padding-top: 24px;
-    padding-left: 24px;
+    padding-top: 14px;
+    padding-left: 16px;
 }
 
 .evolution {

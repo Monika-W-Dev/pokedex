@@ -27,7 +27,9 @@ function pokemonTypesTemplate(pokemonIndex, typesIndex) {
 }
 
 function singlePokemonTemplate(pokemonIndex) {
-    return `<div id="single_pokemon_info_top">
+    return ` <button class="next_previous_button" id="previous" onclick="showPrevious()">&lt;</button>
+            <button class="next_previous_button" id="next" onclick="showNext()">&gt;</button>
+    <div id="single_pokemon_info_top">
             <img id="pokemon_image" class="pokemon_image"
             src="${pokemonsData[pokemonIndex].img}"
             alt="${pokemonsData[pokemonIndex].name}">

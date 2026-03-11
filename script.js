@@ -49,7 +49,6 @@ function renderPokemonAbilities(pokemonIndex) {
     return pokemonsData[pokemonIndex].abilities.map(ability => {
        return `${ability.charAt(0).toUpperCase() + ability.slice(1)}`;
     }).join(', ');
-
 }
 
 function capitalLetters(name) {
@@ -57,3 +56,6 @@ function capitalLetters(name) {
     return capitalName;
 }
 
+function fetchData() {
+
+}

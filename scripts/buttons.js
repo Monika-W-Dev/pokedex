@@ -3,6 +3,7 @@ function openDialog(pokemonIndex) {
     dialogRef.showModal();
     let singlePokemonOverlay = document.getElementById('single_pokemon_overlay');
     singlePokemonOverlay.innerHTML = singlePokemonTemplate(pokemonIndex);
+    return currentPokeIndex = pokemonIndex;
 }
 
 function closeDialog() {
@@ -24,6 +25,18 @@ function changeDisplayInfoPokemon(destinationTab, pokemonIndex) {
     infoSection.innerHTML = window[functionName](pokemonIndex);
 }
 
-//  document.getElementById(closeTab1).setAttribute("class", "card_tap");
-//     document.getElementById(closeTab2).setAttribute("class", "card_tap");
-//     document.getElementById(destinationTab).setAttribute("class", "card_tap open_card");
+function showNext() {
+    currentPokeIndex++;
+    if (currentPokeIndex >= pokemonsData.length) {
+        currentPokeIndex = 0;
+    }
+    openDialog(currentPokeIndex);
+}
+
+function showPrevious() {
+    currentPokeIndex--;
+    if (currentPokeIndex < 0) {
+        currentPokeIndex = pokemonsData.length - 1;
+    }
+    openDialog(currentPokeIndex);
+}
