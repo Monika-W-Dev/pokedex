@@ -165,6 +165,10 @@
     flex: 0 0 53%;
 }
 
+.info_about {
+   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
 #card_taps {
     width: 100%;
     display: flex;
@@ -187,7 +191,7 @@
     line-height: 30px;
     background-color: rgb(255, 229, 126);
     background: linear-gradient(to bottom, #fff7b7 5%, #facd83 100%);
-    
+
 }
 
 .card_tap:hover {
@@ -256,8 +260,42 @@ td:nth-child(3) {
     transition: width 2s ease;
 }
 
+#loading_spin {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#loading_spin img {
+    height: 80px;
+}
 
+.rotating {
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 .bug {
     background-image: linear-gradient(rgba(28, 75, 39, 0.9), rgba(28, 75, 39, 0.9)), url(/assets/img/favicon.png);
@@ -272,7 +310,7 @@ td:nth-child(3) {
 }
 
 .electric {
-    background-image: linear-gradient(rgba(228, 227, 42, 0.9), rgba(228, 227, 42, 0.9)), url(/assets/img/favicon.png);
+    background-image: linear-gradient(rgba(129, 129, 0, 0.9), rgba(92, 92, 0, 0.9)), url(/assets/img/favicon.png);
 }
 
 .fairy {
@@ -300,15 +338,15 @@ td:nth-child(3) {
 }
 
 .ground {
-    background-image: linear-gradient(rgba(169, 112, 44, 0.9), rgba(169, 112, 44, 0.9)), url(/assets/img/favicon.png);
+    background-image: linear-gradient(rgba(155, 104, 41, 0.9), rgba(155, 104, 44, 0.9)), url(/assets/img/favicon.png);
 }
 
 .ice {
-    background-image: linear-gradient(rgba(134, 210, 244, 0.9), rgba(134, 210, 244, 0.9)), url(/assets/img/favicon.png);
+    background-image: linear-gradient(rgba(134, 210, 245, 0.9), rgba(134, 210, 245, 0.9)), url(/assets/img/favicon.png);
 }
 
 .normal {
-    background-image: linear-gradient(rgba(216, 240, 250, 0.9), rgba(216, 240, 250, 0.9)), url(/assets/img/favicon.png);
+    background-image: linear-gradient(rgba(117,81,91, 0.9), rgba(117,81,91, 0.9)), url(/assets/img/favicon.png);
 }
 
 .poison {

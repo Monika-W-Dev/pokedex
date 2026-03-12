@@ -1,28 +1,30 @@
 let pokemonsData = [];
+let foundPokemons = [];
 
 const BASE_URL = "https://pokeapi.co/api/v2/"
 const NUMBER_PER_LOAD = 30;
 let currentRenderIndex = pokemonsData.length;
 
-function init() {
-    fetchData();
+async function init() {
+    await fetchData();
+    document.getElementById('load_more_section').style = '';
 }
 
 async function fetchData() {
+    document.getElementById('loading_spin').style = '';
     let currentRenderIndex = pokemonsData.length;
-    for (let fetchIndex = currentRenderIndex; fetchIndex < NUMBER_PER_LOAD; fetchIndex++) {
+    let arrayLength = pokemonsData.length + NUMBER_PER_LOAD;
+    for (let fetchIndex = currentRenderIndex; fetchIndex < arrayLength; fetchIndex++) {
         try {
             let POKENUMBER = pokemonsData.length + 1;
             let answer = await fetch(BASE_URL + "pokemon/" + POKENUMBER);
             let data = await answer.json();
-            console.log(data);
             await getDataOfPokemon(data);
-            await renderPokemonOverview();
         } catch (error) {
             console.error(error)
         }
-    }
-
+    } await renderPokemonOverview();
+    document.getElementById('loading_spin').style = 'display: none';
 }
 
 async function getDataOfPokemon(data) {
@@ -43,6 +45,11 @@ async function getDataOfPokemon(data) {
     await pokemonsData.push(newPokemon);
 }
 
+function showWaitingSpin() {
+    while (fetchData()) {
+        document.getElementById('loading_spin').style = '';
+    } 
+}
 
 function renderPokemonOverview() {
     let overviewSection = document.getElementById('list_view');
@@ -51,6 +58,8 @@ function renderPokemonOverview() {
         overviewSection.innerHTML += pokemonListViewTemplate(pokemonIndex);
     }
 }
+
+
 
 function renderTypes(pokemonIndex) {
     let renderTypesHtml = "";

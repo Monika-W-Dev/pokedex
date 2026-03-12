@@ -1,4 +1,5 @@
 function openDialog(pokemonIndex) {
+    document.getElementById("dialog").setAttribute("class", `${pokemonsData[pokemonIndex].types[0]}`);
     const dialogRef = document.getElementById("dialog");
     dialogRef.showModal();
     let singlePokemonOverlay = document.getElementById('single_pokemon_overlay');
@@ -39,4 +40,46 @@ function showPrevious() {
         currentPokeIndex = pokemonsData.length - 1;
     }
     openDialog(currentPokeIndex);
+}
+
+function searchPokemon() {
+    let searchInputRef = document.getElementById('input');
+    let inputSearch = searchInputRef.value.toLowerCase();
+    let listView = document.getElementById('list_view');
+    listView.innerHTML = "";
+    if (inputSearch.length >= 3) {
+        let found = pokemonsData.filter((pokemon, index) => {
+            return pokemon.name.toLowerCase().includes(inputSearch);
+        });
+        if (found.length > 0) {
+            found.forEach((pokemon) => {
+            listView.innerHTML += pokemonListViewTemplate(pokemonIndex);
+            })
+        }
+        else {
+            searchInputRef.focus();
+            let faultyInputNotification = document.getElementById('faulty_input');
+            faultyInputNotification.style = "display: block";
+            faultyInputNotification.innerHTML = "ups...not found. Try again"
+            setTimeout(() => {
+                faultyInputNotification.style = "display: none";
+            }, 4000)
+        }
+    }
+    else {
+        searchInputRef.focus();
+        let faultyInputNotification = document.getElementById('faulty_input');
+        faultyInputNotification.style = "display: block";
+        faultyInputNotification.innerHTML = "Please enter at least three letters"
+        setTimeout(() => {
+            faultyInputNotification.style = "display: none";
+        }, 4000)
+    }
+    searchInputRef.value = "";
+}
+
+function refresh() {
+    let searchInput = document.getElementById('input');
+    searchInput.value = "";
+    searchInput.focus();
 }

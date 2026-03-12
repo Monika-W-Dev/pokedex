@@ -4,7 +4,6 @@ html {
 }
 
 body {
-    /* background-image: url(assets/img/background_4.jpg); */
     background-color: rgba(88, 109, 213, 0.98);
     background-size: cover;
     background-repeat: no-repeat;
@@ -22,6 +21,7 @@ header {
     font-size: clamp(1.75rem, 0.9286rem + 2.8571vw, 3.5rem);
     color: rgb(255, 203, 5);
     display: flex;
+    justify-content: space-between;
     align-items: center;
     z-index: 10;
 }
@@ -29,6 +29,79 @@ header {
 header h1 {
     padding-inline-start: 24px;
     font-family: 'LuckiestGuy';
+}
+
+search {
+    height: 100%;
+    padding-right: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.search_buttons {
+    gap: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 8px;
+}
+
+input {
+    padding: 8px;
+    width: 240px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+input:focus {
+    border: solid 2px rgb(255, 203, 5);
+}
+
+.search_section_button {
+    width: 80px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 0 0 0;
+    box-shadow: 0px 1px 0px 0px #fff6af;
+    background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+    background-color: rgb(255, 203, 5);
+    border-radius: 8px;
+    border: 1px solid #ffaa22;
+    display: inline-flex;
+    color: rgb(49, 66, 155);
+    font-family: 'FiraSansRegular';
+    font-size: 22px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffee66;
+}
+
+.search_section_button:hover {
+    background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+    background-color: #ffab23;
+    cursor: pointer;
+}
+
+.search_section_button:active {
+    position: relative;
+    top: 1px;
+}
+
+.refresh {
+    font-family: 'FiraSansBold';
+    font-size: 26px;
+}
+
+#faulty_input {
+    font-size: 22px;
+    text-align: right;
+    padding-right: 24px;
+    color: #ffab23;
 }
 
 main {
@@ -55,10 +128,10 @@ main::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 231, 133, 0.8);
 }
 
-.load_more_section {
+#load_more_section {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .load_more_button {
@@ -67,6 +140,16 @@ main::-webkit-scrollbar-thumb:hover {
     width: 80px;
     border-radius: 50%;
 }
+
+.load_more_button:hover {
+    cursor: pointer;
+}
+
+.load_more_button:active {
+    position: relative;
+    top: 1px;
+}
+
 .load_more_button img {
     background: none;
     height: 100%;
@@ -90,7 +173,43 @@ footer {
     flex-wrap: wrap;
     margin: 36px auto;
     gap: 24px;
+}
 
+@media screen and (max-width: 800px) {
+    search {
+        padding-right: 24px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .search_section_button {
+        width: 60px;
+        height: 26px;
+        font-size: 18px;
+    }
+
+    .refresh {
+        font-family: 'FiraSansBold';
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    header {
+        padding-top: 24px;
+        height: 200px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header h1 {
+        padding-left: 0px;
+    }
+
+    search {
+        padding-right: 0px;
+    }
 }
 
 @media screen and (max-width: 400px) {

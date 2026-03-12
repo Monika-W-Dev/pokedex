@@ -21,24 +21,39 @@
 <body onload="init()">
     <header>
         <h1>Pokedex</h1>
+
+        <search>
+            <input id="input" type="text" value="" required placeholder="search a Pokemon">
+            <div class="search_buttons">
+                <button class="search_section_button" id="search_button" onclick="searchPokemon()">Search</button>
+                <button class="search_section_button refresh" id="refresh_button" title="refresh"
+                    onclick="refresh()">&#8635;</button>
+            </div>
+        </search>
     </header>
+    <span id="faulty_input" style="display: none;"></span>
 
     <main>
         <section id="list_view">
-            <div id="single_list_card" class="single_list_card bug" onclick="openDialog()">
+            <div id="single_list_card" class="single_list_card" onclick="openDialog()">
             </div>
 
         </section>
 
 
-        <dialog id="dialog" class="bug" onclick="closeDialog()">
+        <dialog id="dialog" class="" onclick="closeDialog()">
             <section id="single_pokemon_overlay" onclick="preventCloseDialogOnDialog(event)">
             </section>
         </dialog>
-        <div class="load_more_section">
-            <button class="load_more_button"><img src="/assets/img/LoadMore.png" alt=""></button>
+
+        <div id="load_more_section" style="display: none">
+            <button class="load_more_button" onclick="fetchData()"><img src="/assets/img/LoadMore.png" alt=""></button>
         </div>
     </main>
+
+    <div id="loading_spin" style="display: none">
+        <img class="rotating" src="/assets/img/waiting.png" alt="">
+    </div>
 
     <footer>
         <span>Monika Weikum | 2026</span>
