@@ -5,9 +5,11 @@ function pokemonListViewTemplate(pokemonIndex) {
 
     return `<div class="single_list_card ${mainType}" onclick="openDialog(${pokemonIndex})">
                 <span id="pokemon_id${pokemonIndex}" class="pokemon_id"># ${pokemonsData[pokemonIndex].id}</span>
-                <img id="pokemon_image${pokemonIndex}" class="pokemon_image"
-                    src="${pokemonsData[pokemonIndex].img}"
-                    alt="${pokemonsData[pokemonIndex].name}" onclick="openDialog(${pokemonIndex})">
+                <div class="img_container">
+                    <img id="pokemon_image${pokemonIndex}" class="pokemon_image"
+                        src="${pokemonsData[pokemonIndex].img}"
+                        alt="${pokemonsData[pokemonIndex].name}" onclick="openDialog(${pokemonIndex})">
+                </div>        
                 <span id="pokemon_name${pokemonIndex}" class="pokemon_name">
                 ${capitalLetters(pokemonsData[pokemonIndex].name)}
                 </span>

@@ -2,25 +2,31 @@ let pokemonsData = [];
 
 const BASE_URL = "https://pokeapi.co/api/v2/"
 const NUMBER_PER_LOAD = 30;
+let currentRenderIndex = pokemonsData.length;
 
 function init() {
     fetchData();
 }
 
 async function fetchData() {
-    try {
-        let answer = await fetch(BASE_URL + "pokemon/1");
-        let data = await answer.json();
-        console.log(data);
-       await getDataOfPokemon(data);
-       await renderPokemonOverview();
-    } catch (error) {
-        console.error(error)
+    let currentRenderIndex = pokemonsData.length;
+    for (let fetchIndex = currentRenderIndex; fetchIndex < NUMBER_PER_LOAD; fetchIndex++) {
+        try {
+            let POKENUMBER = pokemonsData.length + 1;
+            let answer = await fetch(BASE_URL + "pokemon/" + POKENUMBER);
+            let data = await answer.json();
+            console.log(data);
+            await getDataOfPokemon(data);
+            await renderPokemonOverview();
+        } catch (error) {
+            console.error(error)
+        }
     }
+
 }
 
-function getDataOfPokemon(data) {
-    const newPokemon = {
+async function getDataOfPokemon(data) {
+   const newPokemon = {
         'id': data.id,
         'name': data.name,
         'img': data.sprites.other.dream_world.front_default,
@@ -34,7 +40,7 @@ function getDataOfPokemon(data) {
             return acc;
         }, {})
     };
-    pokemonsData.push(newPokemon);
+    await pokemonsData.push(newPokemon);
 }
 
 

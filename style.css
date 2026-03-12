@@ -55,6 +55,24 @@ main::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 231, 133, 0.8);
 }
 
+.load_more_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.load_more_button {
+    background: none;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+.load_more_button img {
+    background: none;
+    height: 100%;
+    width: 100%;
+}
+
 footer {
     flex-shrink: 0;
     height: 96px;
