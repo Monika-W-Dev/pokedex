@@ -28,7 +28,6 @@ async function fetchData() {
         }
     } await renderPokemonOverview(pokemonsData);
     document.getElementById('loading_spin').style = 'display: none';
-    preloadEvolutions(currentRenderIndex, arrayLength);
 }
 
 async function getDataOfPokemon(data) {
@@ -58,8 +57,8 @@ async function openDetailCard(pokemonId) {
         pokemon.evolutionChain = await fetchPokemonEvolution(pokemon.name);
     }
     openDialog(pokemonIndex);
+    preloadEvolutions(0, pokemonsData.length);
 }
-
 
 function renderPokemonOverview(array) {
     let overviewSection = document.getElementById('list_view');

@@ -228,9 +228,13 @@ footer {
     }
 
     .evolution_img {
-        height: 80px;
+        padding-top: 10px;
+        max-height: 80px;
+        max-width: 90px;
     }
-
+    .evolution_item span {
+        font-size: 14px;
+    }
     .card_tap {
         width: 98px;
     }

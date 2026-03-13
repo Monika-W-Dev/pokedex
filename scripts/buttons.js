@@ -45,10 +45,10 @@ function showPrevious() {
 function searchPokemon() {
     let inputSearchRef = document.getElementById('input');
     let inputSearch = inputSearchRef.value.toLowerCase();
-    let listView = document.getElementById('list_view');
-    listView.innerHTML = "";
     if (inputSearch.length >= 3) {
-        inputTruthy(inputSearch);
+        let listView = document.getElementById('list_view');
+        listView.innerHTML = "";
+        inputTruthy(inputSearch, inputSearchRef);
     }
     else {
         inputFalsy(inputSearchRef)
@@ -56,7 +56,7 @@ function searchPokemon() {
     inputSearchRef.value = "";
 }
 
-function inputTruthy(inputSearch) {
+function inputTruthy(inputSearch, inputSearchRef) {
     const FOUND = pokemonsData.filter((pokemon) => {
         return pokemon.name.toLowerCase().includes(inputSearch.toLowerCase());
     });
@@ -68,8 +68,11 @@ function inputTruthy(inputSearch) {
         inputSearchRef.focus();
         let faultyInputNotification = document.getElementById('faulty_input');
         faultyInputNotification.style = "display: block";
-        faultyInputNotification.innerHTML = "ups...not found. Try again"
-        setTimeout(() => { faultyInputNotification.style = "display: none"; }, 4000)
+        faultyInputNotification.innerHTML = "ups...not found. Try again";
+        document.getElementById('load_more_section').style = "display: none";
+        setTimeout(() => { faultyInputNotification.style = "display: none"; 
+            refresh()
+        }, 4000)
     }
 }
 
@@ -81,7 +84,6 @@ function inputFalsy(inputSearchRef) {
     faultyInputNotification.innerHTML = "Please enter at least three letters"
     setTimeout(() => {
         faultyInputNotification.style = "display: none";
-        refresh();
     }, 4000)
 }
 

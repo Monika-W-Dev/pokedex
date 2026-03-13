@@ -31,27 +31,27 @@ function pokemonTypesTemplate(pokemonIndex, typesIndex) {
 function singlePokemonTemplate(pokemonIndex) {
     return ` <button class="next_previous_button" id="previous" onclick="showPrevious()">&lt;</button>
             <button class="next_previous_button" id="next" onclick="showNext()">&gt;</button>
-    <div id="single_pokemon_info_top">
+        <div id="single_pokemon_info_top">
             <img id="pokemon_image" class="pokemon_image"
-            src="${pokemonsData[pokemonIndex].img}"
-            alt="${pokemonsData[pokemonIndex].name}">
+                src="${pokemonsData[pokemonIndex].img}"
+                alt="${pokemonsData[pokemonIndex].name}">
             <span id="pokemon_name" class="pokemon_name">
-            ${capitalLetters(pokemonsData[pokemonIndex].name)}
+                ${capitalLetters(pokemonsData[pokemonIndex].name)}
             </span>
-                 <div id="pokemon_types${pokemonIndex}" class="pokemon_types">
+            <div id="pokemon_types${pokemonIndex}" class="pokemon_types">
                     ${renderTypes(pokemonIndex)}
-                </div>
+            </div>
         </div>
 
- <div id="single_pokemon_info_buttom">
-                            <div id="card_taps">
-                                <button id="about" class="card_tap open_card" onclick="changeDisplayInfoPokemon('about', ${pokemonIndex})">About</button>
-                                <button id="baseStats" class="card_tap" onclick="changeDisplayInfoPokemon('baseStats', ${pokemonIndex})">Base Stats</button>
-                                <button id="evolution" class="card_tap" onclick="changeDisplayInfoPokemon('evolution', ${pokemonIndex})">Evolution</button>
-                            </div>
+        <div id="single_pokemon_info_buttom">
+            <div id="card_taps">
+                <button id="about" class="card_tap open_card" onclick="changeDisplayInfoPokemon('about', ${pokemonIndex})">About</button>
+                <button id="baseStats" class="card_tap" onclick="changeDisplayInfoPokemon('baseStats', ${pokemonIndex})">Base Stats</button>
+                <button id="evolution" class="card_tap" onclick="changeDisplayInfoPokemon('evolution', ${pokemonIndex})">Evolution</button>
+            </div>
 
         <div class="info_section" id="info_section">
-        ${aboutTemplate(pokemonIndex)}
+            ${aboutTemplate(pokemonIndex)}
         <div>  
 `
 }
@@ -109,7 +109,7 @@ function evolutionTemplate(pokemonIndex) {
                     <span>${capitalLetters(evolutionObject.name)}</span>
                 </div>`
         }).join('');
-         return `<div class="evolution">
+        return `<div class="evolution">
                     ${evolutionHtml}
                 </div>
 `
