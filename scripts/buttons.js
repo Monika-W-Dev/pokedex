@@ -48,33 +48,41 @@ function searchPokemon() {
     let listView = document.getElementById('list_view');
     listView.innerHTML = "";
     if (inputSearch.length >= 3) {
-        const FOUND = pokemonsData.filter((pokemon) => {
-            return pokemon.name.toLowerCase().includes(inputSearch.toLowerCase());
-        });
-        if (FOUND.length > 0) {
-            renderPokemonOverview(FOUND);
-            document.getElementById('load_more_section').style = "display: none"
-        }
-        else {
-            inputSearchRef.focus();
-            let faultyInputNotification = document.getElementById('faulty_input');
-            faultyInputNotification.style = "display: block";
-            faultyInputNotification.innerHTML = "ups...not found. Try again"
-            setTimeout(() => {
-                faultyInputNotification.style = "display: none";
-            }, 4000)
-        }
+        inputTruthy(inputSearch);
+    }
+    else {
+        inputFalsy(inputSearchRef)
+    }
+    inputSearchRef.value = "";
+}
+
+function inputTruthy(inputSearch) {
+    const FOUND = pokemonsData.filter((pokemon) => {
+        return pokemon.name.toLowerCase().includes(inputSearch.toLowerCase());
+    });
+    if (FOUND.length > 0) {
+        renderPokemonOverview(FOUND);
+        document.getElementById('load_more_section').style = "display: none"
     }
     else {
         inputSearchRef.focus();
         let faultyInputNotification = document.getElementById('faulty_input');
         faultyInputNotification.style = "display: block";
-        faultyInputNotification.innerHTML = "Please enter at least three letters"
-        setTimeout(() => {
-            faultyInputNotification.style = "display: none";
-        }, 4000)
+        faultyInputNotification.innerHTML = "ups...not found. Try again"
+        setTimeout(() => { faultyInputNotification.style = "display: none"; }, 4000)
     }
-    inputSearchRef.value = "";
+}
+
+function inputFalsy(inputSearchRef) {
+    inputSearchRef.focus();
+    let faultyInputNotification = document.getElementById('faulty_input');
+    faultyInputNotification.style = "display: block";
+    document.getElementById('load_more_section').style = "display: none";
+    faultyInputNotification.innerHTML = "Please enter at least three letters"
+    setTimeout(() => {
+        faultyInputNotification.style = "display: none";
+        refresh();
+    }, 4000)
 }
 
 function refresh() {

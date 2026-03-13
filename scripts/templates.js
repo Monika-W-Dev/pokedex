@@ -3,12 +3,12 @@ function pokemonListViewTemplate(array, pokemonIndex) {
     let pokemon = array[pokemonIndex];
     let mainType = pokemon.types[0];
 
-    return `<div class="single_list_card ${mainType}" onclick="openDialog(${pokemonIndex})">
+    return `<div class="single_list_card ${mainType}" onclick="openDetailCard(${pokemonsData[pokemonIndex].id})">
                 <span id="pokemon_id${pokemonIndex}" class="pokemon_id"># ${array[pokemonIndex].id}</span>
                 <div class="img_container">
                     <img id="pokemon_image${pokemonIndex}" class="pokemon_image"
                         src="${array[pokemonIndex].img}"
-                        alt="${array[pokemonIndex].name}" onclick="openDialog(${pokemonIndex})">
+                        alt="${array[pokemonIndex].name}">
                 </div>        
                 <span id="pokemon_name${pokemonIndex}" class="pokemon_name">
                 ${capitalLetters(array[pokemonIndex].name)}
@@ -102,25 +102,16 @@ function baseStatsTemplate(pokemonIndex) {
 }
 
 function evolutionTemplate(pokemonIndex) {
-    let evolutionHtml = pokemonsData[pokemonIndex].evolution.map(image => {
-        return ` <img class="evolution_img"
-        src="${image}">`;
-    }).join('');
-    return `<div class="evolution">
-        ${evolutionHtml}
-            </div>
+    let pokemon = pokemonsData[pokemonIndex];
+    let evolutionHtml = pokemon.evolutionChain.map(evolutionObject => {
+        return ` <div class="evolution_item">
+                    <img class="evolution_img" src="${evolutionObject.img}">
+                    <span>${capitalLetters(evolutionObject.name)}</span>
+                </div>`
+        }).join('');
+         return `<div class="evolution">
+                    ${evolutionHtml}
+                </div>
 `
 }
 
-// return `<div class="evolution">
-//             <img class="evolution_img"
-//                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
-//                 alt="">
-//             <img class="evolution_img"
-//                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
-//                 alt="">
-//             <img class="evolution_img"
-//                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg"
-//                 alt="">
-//         </div>
-// `   
