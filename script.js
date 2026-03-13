@@ -23,7 +23,7 @@ async function fetchData() {
         } catch (error) {
             console.error(error)
         }
-    } await renderPokemonOverview();
+    } await renderPokemonOverview(pokemonsData);
     document.getElementById('loading_spin').style = 'display: none';
 }
 
@@ -51,11 +51,11 @@ function showWaitingSpin() {
     } 
 }
 
-function renderPokemonOverview() {
+function renderPokemonOverview(array) {
     let overviewSection = document.getElementById('list_view');
     overviewSection.innerHTML = "";
-    for (let pokemonIndex = 0; pokemonIndex < pokemonsData.length; pokemonIndex++) {
-        overviewSection.innerHTML += pokemonListViewTemplate(pokemonIndex);
+    for (let pokemonIndex = 0; pokemonIndex < array.length; pokemonIndex++) {
+        overviewSection.innerHTML += pokemonListViewTemplate(array, pokemonIndex);
     }
 }
 

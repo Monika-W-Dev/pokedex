@@ -43,21 +43,20 @@ function showPrevious() {
 }
 
 function searchPokemon() {
-    let searchInputRef = document.getElementById('input');
-    let inputSearch = searchInputRef.value.toLowerCase();
+    let inputSearchRef = document.getElementById('input');
+    let inputSearch = inputSearchRef.value.toLowerCase();
     let listView = document.getElementById('list_view');
     listView.innerHTML = "";
     if (inputSearch.length >= 3) {
-        let found = pokemonsData.filter((pokemon, index) => {
-            return pokemon.name.toLowerCase().includes(inputSearch);
+        const FOUND = pokemonsData.filter((pokemon) => {
+            return pokemon.name.toLowerCase().includes(inputSearch.toLowerCase());
         });
-        if (found.length > 0) {
-            found.forEach((pokemon) => {
-            listView.innerHTML += pokemonListViewTemplate(pokemonIndex);
-            })
+        if (FOUND.length > 0) {
+            renderPokemonOverview(FOUND);
+            document.getElementById('load_more_section').style = "display: none"
         }
         else {
-            searchInputRef.focus();
+            inputSearchRef.focus();
             let faultyInputNotification = document.getElementById('faulty_input');
             faultyInputNotification.style = "display: block";
             faultyInputNotification.innerHTML = "ups...not found. Try again"
@@ -67,7 +66,7 @@ function searchPokemon() {
         }
     }
     else {
-        searchInputRef.focus();
+        inputSearchRef.focus();
         let faultyInputNotification = document.getElementById('faulty_input');
         faultyInputNotification.style = "display: block";
         faultyInputNotification.innerHTML = "Please enter at least three letters"
@@ -75,11 +74,14 @@ function searchPokemon() {
             faultyInputNotification.style = "display: none";
         }, 4000)
     }
-    searchInputRef.value = "";
+    inputSearchRef.value = "";
 }
 
 function refresh() {
     let searchInput = document.getElementById('input');
     searchInput.value = "";
     searchInput.focus();
+    FOUND = "";
+    renderPokemonOverview(pokemonsData);
+    document.getElementById('load_more_section').style = ""
 }

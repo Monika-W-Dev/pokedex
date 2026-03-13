@@ -1,17 +1,17 @@
 
-function pokemonListViewTemplate(pokemonIndex) {
-    let pokemon = pokemonsData[pokemonIndex];
+function pokemonListViewTemplate(array, pokemonIndex) {
+    let pokemon = array[pokemonIndex];
     let mainType = pokemon.types[0];
 
     return `<div class="single_list_card ${mainType}" onclick="openDialog(${pokemonIndex})">
-                <span id="pokemon_id${pokemonIndex}" class="pokemon_id"># ${pokemonsData[pokemonIndex].id}</span>
+                <span id="pokemon_id${pokemonIndex}" class="pokemon_id"># ${array[pokemonIndex].id}</span>
                 <div class="img_container">
                     <img id="pokemon_image${pokemonIndex}" class="pokemon_image"
-                        src="${pokemonsData[pokemonIndex].img}"
-                        alt="${pokemonsData[pokemonIndex].name}" onclick="openDialog(${pokemonIndex})">
+                        src="${array[pokemonIndex].img}"
+                        alt="${array[pokemonIndex].name}" onclick="openDialog(${pokemonIndex})">
                 </div>        
                 <span id="pokemon_name${pokemonIndex}" class="pokemon_name">
-                ${capitalLetters(pokemonsData[pokemonIndex].name)}
+                ${capitalLetters(array[pokemonIndex].name)}
                 </span>
                 <div id="pokemon_types${pokemonIndex}" class="pokemon_types">
                     ${renderTypes(pokemonIndex)}
