@@ -19,7 +19,7 @@ header {
     background-color: rgb(49, 66, 155);
     padding: 0 calc((100% - 1440px)/2);
     flex-shrink: 0;
-    font-size: clamp(30px, 0.9286rem + 2.8571vw, 560px);
+    font-size: clamp(30px, 0.9286rem + 2.8571vw, 56px);
     color: rgb(255, 203, 5);
     display: flex;
     justify-content: space-between;
@@ -250,6 +250,14 @@ footer {
         padding-top: 10px;
         max-height: 80px;
         max-width: 90px;
+    }
+    
+    .evolution  {
+      max-width: 290px;  
+    }
+
+    .evolution_item {
+        min-width: 100px;
     }
 
     .card_tap {
