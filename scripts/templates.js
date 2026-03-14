@@ -1,9 +1,6 @@
 
 function pokemonListViewTemplate(array, pokemonIndex) {
-    let pokemon = array[pokemonIndex];
-    let mainType = pokemon.types[0];
-
-    return `<div class="single_list_card ${mainType}" onclick="openDetailCard(${pokemonsData[pokemonIndex].id})">
+        return `<div class="single_list_card ${array[pokemonIndex].types[0]}" onclick="openDetailCard(${array[pokemonIndex].id})">
                 <span id="pokemon_id${pokemonIndex}" class="pokemon_id"># ${array[pokemonIndex].id}</span>
                 <div class="img_container">
                     <img id="pokemon_image${pokemonIndex}" class="pokemon_image"
@@ -14,32 +11,32 @@ function pokemonListViewTemplate(array, pokemonIndex) {
                 ${capitalLetters(array[pokemonIndex].name)}
                 </span>
                 <div id="pokemon_types${pokemonIndex}" class="pokemon_types">
-                    ${renderTypes(pokemonIndex)}
+                    ${renderTypes(array, pokemonIndex)}
                 </div>
             </div>
     `
 }
 
-function pokemonTypesTemplate(pokemonIndex, typesIndex) {
-    let pokemonType = pokemonsData[pokemonIndex].types[typesIndex]
+function pokemonTypesTemplate(array, pokemonIndex, typesIndex) {
+    let pokemonType = array[pokemonIndex].types[typesIndex]
     return `<div class="pokemon_type ${pokemonType}">
                 ${pokemonType}
             </div>  
     `
 }
 
-function singlePokemonTemplate(pokemonIndex) {
+function singlePokemonTemplate(array, pokemonIndex) {
     return ` <button class="next_previous_button" id="previous" onclick="showPrevious()">&lt;</button>
             <button class="next_previous_button" id="next" onclick="showNext()">&gt;</button>
         <div id="single_pokemon_info_top">
             <img id="pokemon_image" class="pokemon_image"
-                src="${pokemonsData[pokemonIndex].img}"
-                alt="${pokemonsData[pokemonIndex].name}">
+                src="${array[pokemonIndex].img}"
+                alt="${array[pokemonIndex].name}">
             <span id="pokemon_name" class="pokemon_name">
-                ${capitalLetters(pokemonsData[pokemonIndex].name)}
+                ${capitalLetters(array[pokemonIndex].name)}
             </span>
             <div id="pokemon_types${pokemonIndex}" class="pokemon_types">
-                    ${renderTypes(pokemonIndex)}
+                    ${renderTypes(array, pokemonIndex)}
             </div>
         </div>
 
@@ -51,33 +48,33 @@ function singlePokemonTemplate(pokemonIndex) {
             </div>
 
         <div class="info_section" id="info_section">
-            ${aboutTemplate(pokemonIndex)}
+            ${aboutTemplate(array, pokemonIndex)}
         <div>  
 `
 }
 
-function aboutTemplate(pokemonIndex) {
+function aboutTemplate(array, pokemonIndex) {
     return ` <table class="info_about">
                 <tbody>
                     <tr>
                         <td>Height</td>
-                        <td>${pokemonsData[pokemonIndex].height}</td>
+                        <td>${array[pokemonIndex].height}</td>
                     </tr>
                     <tr>
                         <td>Weight</td>
-                        <td>${pokemonsData[pokemonIndex].weight}</td>
+                        <td>${array[pokemonIndex].weight}</td>
                     </tr>
                     <tr>
                         <td>Abilities</td>
-                        <td>${renderPokemonAbilities(pokemonIndex)}</td>
+                        <td>${renderPokemonAbilities(array, pokemonIndex)}</td>
                     </tr>
                 </tbody>
             </table>
 `
 }
 
-function baseStatsTemplate(pokemonIndex) {
-    let baseStats = pokemonsData[pokemonIndex].base_stats;
+function baseStatsTemplate(array, pokemonIndex) {
+    let baseStats = array[pokemonIndex].base_stats;
     let allStatsHtml = Object.entries(baseStats).map(([statsName, statsValue]) => {
         return `
             <tr>
@@ -101,8 +98,8 @@ function baseStatsTemplate(pokemonIndex) {
 `
 }
 
-function evolutionTemplate(pokemonIndex) {
-    let pokemon = pokemonsData[pokemonIndex];
+function evolutionTemplate(array, pokemonIndex) {
+    let pokemon = array[pokemonIndex];
     let evolutionHtml = pokemon.evolutionChain.map(evolutionObject => {
         return ` <div class="evolution_item">
                     <img class="evolution_img" src="${evolutionObject.img}">

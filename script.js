@@ -1,8 +1,9 @@
-let pokemonsData = [];
-let evolutionData = [];
-let currentRenderIndex = pokemonsData.length;
+const POKEMONS_DATA = [];
+const EVOLUTION_DATA = [];
+let foundPokemons = [];
+const CURRENT_RENDER_INDEX = POKEMONS_DATA.length;
 let currentPokeIndex;
-
+let currentArray = [];
 
 const BASE_URL = "https://pokeapi.co/api/v2/"
 const NUMBER_PER_LOAD = 30;
@@ -14,19 +15,19 @@ async function init() {
 }
 
 async function fetchData() {
+    currentArray = POKEMONS_DATA;
     document.getElementById('loading_spin').style = '';
-    let currentRenderIndex = pokemonsData.length;
-    let arrayLength = pokemonsData.length + NUMBER_PER_LOAD;
-    for (let fetchIndex = currentRenderIndex; fetchIndex < arrayLength; fetchIndex++) {
+    let arrayLength = POKEMONS_DATA.length + NUMBER_PER_LOAD;
+    for (let fetchIndex = CURRENT_RENDER_INDEX; fetchIndex < arrayLength; fetchIndex++) {
         try {
-            let pokeNumber = pokemonsData.length + 1;
+            let pokeNumber = POKEMONS_DATA.length + 1;
             let answer = await fetch(BASE_URL + "pokemon/" + pokeNumber);
             let data = await answer.json();
             await getDataOfPokemon(data);
         } catch (error) {
             console.error(error)
         }
-    } await renderPokemonOverview(pokemonsData);
+    } await renderPokemonOverview(currentArray);
     document.getElementById('loading_spin').style = 'display: none';
 }
 
@@ -46,18 +47,18 @@ async function getDataOfPokemon(data) {
         }, {}),
         'evolutionChain': [],
     };
-    await pokemonsData.push(NEW_POKEMON);
+    await POKEMONS_DATA.push(NEW_POKEMON);
 }
 
 async function openDetailCard(pokemonId) {
-    let pokemon = pokemonsData.find(p => p.id === pokemonId);
-    let pokemonIndex = pokemonsData.indexOf(pokemon);
+    let pokemon = currentArray.find(p => p.id === pokemonId);
+    let pokemonIndex = currentArray.indexOf(pokemon);
 
     if (pokemon.evolutionChain.length === 0) {
         pokemon.evolutionChain = await fetchPokemonEvolution(pokemon.name);
     }
-    openDialog(pokemonIndex);
-    preloadEvolutions(0, pokemonsData.length);
+    openDialog(currentArray, pokemonIndex);
+    preloadEvolutions(0, POKEMONS_DATA.length);
 }
 
 function renderPokemonOverview(array) {
@@ -68,16 +69,16 @@ function renderPokemonOverview(array) {
     }
 }
 
-function renderTypes(pokemonIndex) {
+function renderTypes(array, pokemonIndex) {
     let renderTypesHtml = "";
-    for (let typesIndex = 0; typesIndex < pokemonsData[pokemonIndex].types.length; typesIndex++) {
-        renderTypesHtml += pokemonTypesTemplate(pokemonIndex, typesIndex);
+    for (let typesIndex = 0; typesIndex < array[pokemonIndex].types.length; typesIndex++) {
+        renderTypesHtml += pokemonTypesTemplate(array, pokemonIndex, typesIndex);
     }
     return renderTypesHtml;
 }
 
-function renderPokemonAbilities(pokemonIndex) {
-    return pokemonsData[pokemonIndex].abilities.map(ability => {
+function renderPokemonAbilities(array, pokemonIndex) {
+    return array[pokemonIndex].abilities.map(ability => {
         return `${ability.charAt(0).toUpperCase() + ability.slice(1)}`;
     }).join(', ');
 }
@@ -93,9 +94,9 @@ async function fetchPokemonEvolution(pokemonName) {
     try {
         const EVOLUTION_URL = await getEvolutionChainUrl(pokemonName);
         let evolutionResult = await fetch(EVOLUTION_URL);
-        let evolutionData = await evolutionResult.json();
+        let EVOLUTION_DATA = await evolutionResult.json();
         let names = [];
-        getNamesofEvolution(evolutionData.chain, names);
+        getNamesofEvolution(EVOLUTION_DATA.chain, names);
         return await getEvolutionDetails(names);
     } catch (error) {
         console.error(error);
@@ -105,8 +106,8 @@ async function fetchPokemonEvolution(pokemonName) {
 
 async function getEvolutionChainUrl(pokemonName) {
     let pokemonEvolutionAnswer = await fetch(BASE_URL + "pokemon-species/" + pokemonName);
-    let pokemonEvolutionData = await pokemonEvolutionAnswer.json();
-    return pokemonEvolutionData.evolution_chain.url;
+    let pokemonEVOLUTION_DATA = await pokemonEvolutionAnswer.json();
+    return pokemonEVOLUTION_DATA.evolution_chain.url;
 }
 
 async function getEvolutionDetails(names) {
@@ -124,7 +125,7 @@ async function getEvolutionDetails(names) {
 
 async function preloadEvolutions(startIndex, endIndex) {
     for (let index = startIndex; index < endIndex; index++) {
-        let pokemon = pokemonsData[index];
+        let pokemon = POKEMONS_DATA[index];
         if (pokemon && pokemon.evolutionChain.length === 0) {
             pokemon.evolutionChain = await fetchPokemonEvolution(pokemon.name);
         }

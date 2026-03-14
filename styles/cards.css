@@ -73,7 +73,7 @@
 
 #dialog:open {
     height: 512px;
-    width: clamp(310px, 100%, 384px);
+    width: clamp(340px, 100%, 390px);
     border-radius: 24px;
     display: flex;
     justify-content: center;
@@ -177,15 +177,15 @@
 }
 
 .card_tap {
-    width: 100px;
+    width: 110px;
     border-top-left-radius: 24px;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 24px;
     padding: 0 12px;
     text-align: center;
-    height: 30px;
-    line-height: 30px;
+    height: 32px;
+    font-size: 16px;
     background-color: rgb(255, 229, 126);
     background: linear-gradient(to bottom, #fff7b7 5%, #facd83 100%);
 }

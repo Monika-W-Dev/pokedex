@@ -14,11 +14,12 @@ body {
 }
 
 header {
-    height: clamp(120px, 8vw + 20px, 156px);
+    /* height: clamp(120px, 8vw + 20px, 156px); */
+    height: 150px;
     background-color: rgb(49, 66, 155);
     padding: 0 calc((100% - 1440px)/2);
     flex-shrink: 0;
-    font-size: clamp(1.75rem, 0.9286rem + 2.8571vw, 3.5rem);
+    font-size: clamp(30px, 0.9286rem + 2.8571vw, 560px);
     color: rgb(255, 203, 5);
     display: flex;
     justify-content: space-between;
@@ -35,9 +36,18 @@ search {
     height: 100%;
     padding-right: 24px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input_search {
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    padding-top: 20px;
+    height: 70%;
 }
 
 .search_buttons {
@@ -99,9 +109,9 @@ input:focus {
 
 #faulty_input {
     font-size: 22px;
-    text-align: right;
-    padding-right: 24px;
     color: #ffab23;
+    height: 30%;
+    padding-bottom: 24px;
 }
 
 main {
@@ -176,16 +186,33 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
-    search {
-        padding-right: 24px;
+    header {
+        padding-top: 24px;
+        height: 220px;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    search {
+        padding-right: 0;
         gap: 8px;
+    }
+
+    .input_search {
+        padding-top: 8px;
+        height: 60px;
     }
 
     .search_section_button {
         width: 60px;
         height: 26px;
         font-size: 18px;
+    }
+
+    #faulty_input {
+        padding-bottom: 4px;
+        font-size: 20px;
     }
 
     .refresh {
@@ -195,14 +222,6 @@ footer {
 }
 
 @media screen and (max-width: 560px) {
-    header {
-        padding-top: 24px;
-        height: 200px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
     header h1 {
         padding-left: 0px;
     }
@@ -232,15 +251,22 @@ footer {
         max-height: 80px;
         max-width: 90px;
     }
-    .evolution_item span {
-        font-size: 14px;
-    }
+
     .card_tap {
         width: 98px;
+        height: 40px;
+        gap: 2px;
     }
 
     .info_section table {
         padding-top: 12px;
         padding-left: 8px;
+    }
+
+      .input_search {
+        height: 78px;
+        margin-top: 6px;
+        flex-direction: column;
+        gap: 6px;
     }
 }

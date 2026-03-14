@@ -23,20 +23,22 @@
         <h1>Pokedex</h1>
 
         <search>
-            <input id="input" type="text" value="" required placeholder="search a Pokemon">
-            <div class="search_buttons">
-                <button class="search_section_button" id="search_button" onclick="searchPokemon()">Search</button>
-                <button class="search_section_button refresh" id="refresh_button" title="refresh"
-                    onclick="refresh()">&#8635;</button>
+            <div class="input_search">
+                <input id="input" type="text" value="" required placeholder="search a Pokemon">
+                <div class="search_buttons">
+                    <button class="search_section_button" id="search_button" onclick="searchPokemon()">Search</button>
+                    <button class="search_section_button refresh" id="refresh_button" title="refresh"
+                        onclick="refresh()">&#8635;</button>
+                </div>
             </div>
+            <span id="faulty_input" style="display: none;">Please enter</span>
+
         </search>
     </header>
-    <span id="faulty_input" style="display: none;"></span>
+
 
     <main>
         <section id="list_view">
-            <div id="single_list_card" class="single_list_card" onclick="openDialog()">
-            </div>
 
         </section>
 

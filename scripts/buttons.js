@@ -1,15 +1,15 @@
-function openDialog(pokemonIndex) {
-    document.getElementById("dialog").setAttribute("class", `${pokemonsData[pokemonIndex].types[0]}`);
-    const dialogRef = document.getElementById("dialog");
-    dialogRef.showModal();
+function openDialog(array, pokemonIndex) {
+    document.getElementById("dialog").setAttribute("class", `${array[pokemonIndex].types[0]}`);
+    const DIALOG_REF = document.getElementById("dialog");
+    DIALOG_REF.showModal();
     let singlePokemonOverlay = document.getElementById('single_pokemon_overlay');
-    singlePokemonOverlay.innerHTML = singlePokemonTemplate(pokemonIndex);
+    singlePokemonOverlay.innerHTML = singlePokemonTemplate(array, pokemonIndex);
     return currentPokeIndex = pokemonIndex;
 }
 
 function closeDialog() {
-    const dialogRef = document.getElementById("dialog");
-    dialogRef.close();
+    const DIALOG_REF = document.getElementById("dialog");
+    DIALOG_REF.close();
 }
 
 function preventCloseDialogOnDialog(event) {
@@ -23,23 +23,23 @@ function changeDisplayInfoPokemon(destinationTab, pokemonIndex) {
     document.getElementById(destinationTab).classList.add("open_card");
     let infoSection = document.getElementById('info_section');
     let functionName = destinationTab + "Template";
-    infoSection.innerHTML = window[functionName](pokemonIndex);
+    infoSection.innerHTML = window[functionName](currentArray, pokemonIndex);
 }
 
 function showNext() {
     currentPokeIndex++;
-    if (currentPokeIndex >= pokemonsData.length) {
+    if (currentPokeIndex >= currentArray.length) {
         currentPokeIndex = 0;
     }
-    openDialog(currentPokeIndex);
+    openDialog(currentArray, currentPokeIndex);
 }
 
 function showPrevious() {
     currentPokeIndex--;
     if (currentPokeIndex < 0) {
-        currentPokeIndex = pokemonsData.length - 1;
+        currentPokeIndex = currentArray.length - 1;
     }
-    openDialog(currentPokeIndex);
+    openDialog(currentArray, currentPokeIndex);
 }
 
 function searchPokemon() {
@@ -57,22 +57,20 @@ function searchPokemon() {
 }
 
 function inputTruthy(inputSearch, inputSearchRef) {
-    const FOUND = pokemonsData.filter((pokemon) => {
+    
+    foundPokemons = POKEMONS_DATA.filter((pokemon) => {
         return pokemon.name.toLowerCase().includes(inputSearch.toLowerCase());
     });
-    if (FOUND.length > 0) {
-        renderPokemonOverview(FOUND);
+    if (foundPokemons.length > 0) {
+        currentArray = foundPokemons;
+        renderPokemonOverview(currentArray);
         document.getElementById('load_more_section').style = "display: none"
     }
     else {
         inputSearchRef.focus();
-        let faultyInputNotification = document.getElementById('faulty_input');
-        faultyInputNotification.style = "display: block";
+        let faultyInputNotification = document.getElementById('list_view');
         faultyInputNotification.innerHTML = "ups...not found. Try again";
         document.getElementById('load_more_section').style = "display: none";
-        setTimeout(() => { faultyInputNotification.style = "display: none"; 
-            refresh()
-        }, 4000)
     }
 }
 
@@ -89,9 +87,10 @@ function inputFalsy(inputSearchRef) {
 
 function refresh() {
     let searchInput = document.getElementById('input');
+    currentArray = POKEMONS_DATA;12
     searchInput.value = "";
     searchInput.focus();
     FOUND = "";
-    renderPokemonOverview(pokemonsData);
+    renderPokemonOverview(currentArray);
     document.getElementById('load_more_section').style = ""
 }
